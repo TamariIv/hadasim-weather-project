@@ -2,44 +2,58 @@ import React, { useState, useEffect } from "react";
 
 import "./App.css";
 
+import WeatherDisplay from './WeatherDisplay'; // Import the reusable component
 const OPEN_WEATHER_KEY = "af2ed40660feb491e8ab596899a09b74"
 
 function App() {
-  const [temperature, setTemperature] = useState(null); // State to store temperature
-  const [error, setError] = useState(null); // State to track errors
-  const locations = 'New York'; // Example city name
-
-  // Fetch the weather data
-  useEffect(() => {
-    const fetchWeather = async () => {
-      try {
-        const response = await fetch(
-          `http://api.openweathermap.org/data/2.5/weather?q=${locations}&APPID=${OPEN_WEATHER_KEY}&units=metric`
-        );
-        if (!response.ok) {
-          throw new Error('Error fetching weather data');
-        }
-        const data = await response.json();
-        setTemperature(data.main.temp); // Extract the temperature
-      } catch (error) {
-        setError(error.message);
-      }
-    };
-
-    fetchWeather();
-  }, [locations, OPEN_WEATHER_KEY]); // Effect runs once on component mount
-
   return (
-    <div className="wrapper">
-      <h3>ניו יורק</h3>
-      <div className="app__data">
-        <p className="temp">
-          Current Temperature: {error ? error : temperature !== null ? `${temperature} °C` : 'Loading...'}
-        </p>
-      </div>
+    <div>
+      <h1>Weather in Various Locations</h1>
+      {/* Render WeatherDisplay components for different locations */}
+      <WeatherDisplay location="Eilat" />
+      <WeatherDisplay location="New York" />
+      <WeatherDisplay location="London" />
+      <WeatherDisplay location="Alaska" />
     </div>
   );
 }
+
+// function App() {
+//   const [temperature, setTemperature] = useState(null); // State to store temperature
+//   const [error, setError] = useState(null); // State to track errors
+//   const locations = 'New York'; // Example city name
+
+//   // Fetch the weather data
+//   useEffect(() => {
+//     const fetchWeather = async () => {
+//       try {
+//         const response = await fetch(
+//           `http://api.openweathermap.org/data/2.5/weather?q=${locations}&APPID=${OPEN_WEATHER_KEY}&units=metric`
+//         );
+//         if (!response.ok) {
+//           throw new Error('Error fetching weather data');
+//         }
+//         const data = await response.json();
+//         setTemperature(data.main.temp); // Extract the temperature
+//       } catch (error) {
+//         setError(error.message);
+//       }
+//     };
+
+//     fetchWeather();
+//   }, [locations, OPEN_WEATHER_KEY]); // Effect runs once on component mount
+
+//   return (
+//     <div className="wrapper">
+//       <h3>ניו יורק</h3>
+//       <div className="app__data">
+//         <p className="temp">
+//           Current Temperature: {error ? error : temperature !== null ? `${temperature} °C` : 'Loading...'}
+//         </p>
+//       </div>
+//     </div>
+//   );
+// }
 
 // function App() {
 //   const [weather, setWeather] = useState({});
