@@ -2,18 +2,24 @@ import React, { useState, useEffect } from "react";
 
 import "./App.css";
 
-import WeatherDisplay from './WeatherDisplay'; // Import the reusable component
+import WeatherDisplay from './WeatherDisplay'; 
 const OPEN_WEATHER_KEY = "af2ed40660feb491e8ab596899a09b74"
 
 function App() {
   return (
-    <div>
-      <h1>Weather in Various Locations</h1>
-      {/* Render WeatherDisplay components for different locations */}
-      <WeatherDisplay location="Eilat" />
-      <WeatherDisplay location="New York" />
-      <WeatherDisplay location="London" />
-      <WeatherDisplay location="Alaska" />
+    <div className="app">
+      <div className="app-title">
+      <h1>תחזית מזג אוויר מסביב לעולם</h1> {/* Add the title here */}
+      </div>
+
+      <div className="weather-display-container">
+        {/* Render WeatherDisplay components for he requested locations */}
+        <WeatherDisplay location="Eilat" />
+        <WeatherDisplay location="New York" />
+        <WeatherDisplay location="London" />
+        <WeatherDisplay location="Alaska" />
+      </div>
+
     </div>
   );
 }
