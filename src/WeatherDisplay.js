@@ -57,16 +57,16 @@ function WeatherDisplay({ location }) {
             </div>
         </div>
       <div className="app__data">
-        <p className="temp">
+        <p className="text">
           {error ? `Error: ${error}` : description !== null ? <span className="weather-desc">{description}</span> : 'Loading...'}
         </p>
-        <p className="temp">
+        <p className="text">
           {error ? `Error: ${error}` : temperature !== null ? `טמפרטורה: ${temperature} °C` : 'Loading...'}
         </p>
-        <p className="temp">
+        <p className="text">
           {error ? `Error: ${error}` : feelsLike !== null ? `טמפרטורה מורגשת: ${feelsLike} °C` : 'Loading...'}
         </p>
-        <p className="temp">
+        <p className="text">
           {error ? `Error: ${error}` : feelsLike !== null ? `לחות: ${humidity}%` : 'Loading...'}
         </p>
       </div>
